@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="171.0" prefWidth="213.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="385.0" prefWidth="343.0">
+         <children>
+            <TextField id="tf" layoutX="60.0" layoutY="42.0" prefHeight="43.0" prefWidth="222.0" />
+            <Button id="btn1" layoutX="60.0" layoutY="104.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="1" />
+            <Button id="btn2" layoutX="143.0" layoutY="104.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="2" />
+            <Button id="btn3" layoutX="225.0" layoutY="104.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="3" />
+            <Button id="btn6" layoutX="226.0" layoutY="171.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="6" />
+            <Button id="btn5" layoutX="144.0" layoutY="171.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="5" />
+            <Button id="btn4" layoutX="61.0" layoutY="171.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="4" />
+            <Button id="btn7" layoutX="62.0" layoutY="238.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="7" />
+            <Button id="btn8" layoutX="145.0" layoutY="238.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="8" />
+            <Button id="btn9" layoutX="227.0" layoutY="238.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="9" />
+            <Button id="btn0" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="0" />
+            <Button id="btnCall" layoutX="227.0" layoutY="301.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="CALL" />
+            <Button id="btnBack" layoutX="62.0" layoutY="301.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="57.0" text="&lt;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

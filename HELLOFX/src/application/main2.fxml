@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="171.0" prefWidth="213.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="258.0" prefWidth="290.0">
+         <children>
+            <Button id="btn" layoutX="117.0" layoutY="77.0" mnemonicParsing="false" text="increase">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label id="lbl" layoutX="82.0" layoutY="41.0" text="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

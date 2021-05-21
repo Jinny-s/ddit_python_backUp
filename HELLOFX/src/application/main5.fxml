@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="171.0" prefWidth="213.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="231.0" prefWidth="395.0">
+         <children>
+            <Label layoutX="45.0" layoutY="47.0" text="USER :" />
+            <Label layoutX="46.0" layoutY="108.0" text="COM :" />
+            <Label layoutX="31.0" layoutY="169.0" text="RESULT :" />
+            <TextField id="tfUser" layoutX="102.0" layoutY="43.0" prefHeight="23.0" prefWidth="85.0" />
+            <TextField id="tfCom" layoutX="102.0" layoutY="104.0" prefHeight="23.0" prefWidth="85.0" />
+            <TextField id="tfResult" layoutX="102.0" layoutY="165.0" prefHeight="23.0" prefWidth="85.0" />
+            <Button id="btn" layoutX="225.0" layoutY="104.0" mnemonicParsing="false" text="결과보기" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.6.0.js"></script>
+</head>
+<body>
+	<table style="text-align: center;">
+		<tr>
+			<td>
+				<table border=1>
+					<tr>
+						<th>NO.</th>
+						<th>ID</th>
+						<th>NAME</th>
+						<th>BIRTH</th>
+					</tr>
+					{% for emp in mylist%}
+					<tr>
+						<td>{{loop.index}}</td>
+						<td onclick="fn_detail('{{emp.e_id}}','{{emp.e_name}}','{{emp.birth}}')">{{emp.e_id}}</td>
+						<td>{{emp.e_name}}</td>
+						<td>{{emp.birth}}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</td>
+			<td>
+				<table border=1>
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" id="e_id" name="e_id" /></td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td><input type="text" id="e_name" name="e_name" /></td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td><input type="text" id="birth" name="birth" /></td>
+					</tr>
+					<tr>
+						<td colspan=2>
+							<button type="button" onclick="fn_add()">추가</button>
+							<button type="button" onclick="fn_update()">수정</button>
+							<button type="button" onclick="fn_delete()">삭제</button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function fn_detail(e_id, e_name, birth) {
+			$('#e_id').val(e_id);
+			$('#e_name').val(e_name);
+			$('#birth').val(birth);
+		}
+
+		function fn_add() {
+			var param = {
+				'e_id' : $('#e_id').val(),
+				'e_name' : $('#e_name').val(),
+				'birth' : $('#birth').val()
+			}
+			
+			$.ajax({
+                type: 'POST',
+                url: 'add.ajax',
+                data: JSON.stringify(param),
+                dataType : 'JSON',
+                contentType: "application/json",
+                success: function(data){
+                    if(data.msg == "ok") {
+                    	alert('정상 추가되었습니다.');
+                    	location.reload();
+                    } else {
+                    	alert('실행 중 문제가 생겼습니다.');
+                    }
+                },
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                }
+            })
+		}
+
+		function fn_update() {
+			var param = {
+					'e_id' : $('#e_id').val(),
+					'e_name' : $('#e_name').val(),
+					'birth' : $('#birth').val()
+				}
+				
+				$.ajax({
+	                type: 'POST',
+	                url: 'upd.ajax',
+	                data: JSON.stringify(param),
+	                dataType : 'JSON',
+	                contentType: "application/json",
+	                success: function(data){
+	                    if(data.msg == "ok") {
+	                    	alert('정상 수정되었습니다.');
+	                    	location.reload();
+	                    } else {
+	                    	alert('실행 중 문제가 생겼습니다.');
+	                    }
+	                },
+	                error: function(request, status, error){
+	                    alert('ajax 통신 실패')
+	                }
+	            })
+		}
+
+		function fn_delete() {
+			var param = { 'e_id' : $('#e_id').val()	}
+				
+				$.ajax({
+	                type: 'POST',
+	                url: 'del.ajax',
+	                data: JSON.stringify(param),
+	                dataType : 'JSON',
+	                contentType: "application/json",
+	                success: function(data){
+	                    if(data.msg == "ok") {
+	                    	alert('정상 삭제되었습니다.');
+	                    	location.reload();
+	                    } else {
+	                    	alert('실행 중 문제가 생겼습니다.');
+	                    }
+	                },
+	                error: function(request, status, error){
+	                    alert('ajax 통신 실패')
+	                }
+	            })
+		}
+	</script>
+</body>
+</html>

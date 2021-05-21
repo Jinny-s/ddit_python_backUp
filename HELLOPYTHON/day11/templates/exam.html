@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="jquery-3.6.0.js"></script>
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+		crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-striped text-center">
+				<thead>
+					<tr class="thead-dark">
+						<th>NO</th>
+						<th>이름</th>
+						<th>국어</th>
+						<th>영어</th>
+						<th>수학</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for exam in examList %}
+					<tr>
+						<td>{{loop.index}}</td>
+						<td><a href="javascript:fn_detail('{{exam.e_id}}','{{exam.kor}}','{{exam.eng}}','{{exam.math}}')">{{exam.e_id}}</a></td>
+						<td>{{exam.kor}}</td>
+						<td>{{exam.eng}}</td>
+						<td>{{exam.math}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<table class="table table-bordered text-center">
+				<tbody>
+					<tr>
+						<th>이름</th>
+						<td><input class="form-control" type="text" id="e_id" name="e_id" /></td>
+					</tr>
+					<tr>
+						<th>국어</th>
+						<td><input class="form-control" type="text" id="kor" name="kor" /></td>
+					</tr>
+					<tr>
+						<th>영어</th>
+						<td><input class="form-control" type="text" id="eng" name="eng" /></td>
+					</tr>
+					<tr>
+						<th>수학</th>
+						<td><input class="form-control" type="text" id="math" name="math" /></td>
+					</tr>
+					<tr>
+						<td colspan=2>
+							<button type="button" class="btn btn-sm btn-outline-info" onclick="fn_add()">추가</button>
+							<button type="button" class="btn btn-sm btn-outline-info" onclick="fn_update()">수정</button>
+							<button type="button" class="btn btn-sm btn-outline-info" onclick="fn_delete()">삭제</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function fn_detail(e_id, kor, eng, math) {
+		$('#e_id').val(e_id);
+		$('#kor').val(kor);
+		$('#eng').val(eng);
+		$('#math').val(math);
+	}
+
+	function fn_add() {
+		var param = {
+			'e_id' : $('#e_id').val(),
+			'kor' : $('#kor').val(),
+			'eng' : $('#eng').val(),
+			'math' : $('#math').val()
+		}
+		
+		$.ajax({
+               type: 'POST',
+               url: 'add.ajax',
+               data: JSON.stringify(param),
+               dataType : 'JSON',
+               contentType: "application/json",
+               success: function(data){
+                   if(data.msg == "ok") {
+                   	alert('정상 추가되었습니다.');
+                   	location.reload();
+                   } else {
+                   	alert('실행 중 문제가 생겼습니다.');
+                   }
+               },
+               error: function(request, status, error){
+                   alert('ajax 통신 실패')
+               }
+           })
+	}
+
+	function fn_update() {
+		var param = {
+				'e_id' : $('#e_id').val(),
+				'kor' : $('#kor').val(),
+				'eng' : $('#eng').val(),
+				'math' : $('#math').val()
+			}
+			
+			$.ajax({
+                type: 'POST',
+                url: 'upd.ajax',
+                data: JSON.stringify(param),
+                dataType : 'JSON',
+                contentType: "application/json",
+                success: function(data){
+                    if(data.msg == "ok") {
+                    	alert('정상 수정되었습니다.');
+                    	location.reload();
+                    } else {
+                    	alert('실행 중 문제가 생겼습니다.');
+                    }
+                },
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                }
+            })
+	}
+
+	function fn_delete() {
+		var param = { 'e_id' : $('#e_id').val()	}
+			
+			$.ajax({
+                type: 'POST',
+                url: 'del.ajax',
+                data: JSON.stringify(param),
+                dataType : 'JSON',
+                contentType: "application/json",
+                success: function(data){
+                    if(data.msg == "ok") {
+                    	alert('정상 삭제되었습니다.');
+                    	location.reload();
+                    } else {
+                    	alert('실행 중 문제가 생겼습니다.');
+                    }
+                },
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                }
+            })
+	}
+</script>
+</body>
+</html>

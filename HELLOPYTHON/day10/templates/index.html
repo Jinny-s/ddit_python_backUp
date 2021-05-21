@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello, ㅇVㅇ!!</h1>
+	<h3>{{ title }}</h3>
+	{% for item in list%}
+		{{ loop.index }}.
+		{{ item }}<br/>
+	{% endfor %}
+	<br/>
+	{% for obj in objlist%}
+		{{obj.e_id}}
+		{{obj.e_name}}
+		{{obj.birth}}<br/>
+	{% endfor %}
+	<br/>
+	
+	<table border=1>
+		<tr>
+			<th>NO.</th>
+			<th>NAME</th>
+		</tr>
+		{% for item in list%}
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ item }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>

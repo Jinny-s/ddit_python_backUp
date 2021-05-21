@@ -1,0 +1,60 @@
+<html>
+<head>
+    <script src="jquery-3.6.0.js"></script>
+</head>
+<body>
+    <h1>AJAX Test</h1>
+    <input type="text" id="e_id" placeholder="아이디" /><br/><br/>
+    <input type="text" id="e_name" placeholder="이름" /><br/><br/>
+    <input type="text" id="e_birth" placeholder="태어난 해" /><br/><br/>
+    <input type="button" id="btn_run" value="결과보기" />
+    <a href="javascript:fn_ajax()">결과</a>
+    
+    <script>
+        $('#btn_run').click(function(){
+            var id = $('#e_id').val();
+            var name = $('#e_name').val();
+            var birth = $('#e_birth').val();
+
+            var postdata = {
+                'id':id, 'name':name, 'birth':birth
+            }
+            $.ajax({
+                type: 'POST',
+                url: 'ajax',
+                data: JSON.stringify(postdata),
+                dataType : 'JSON',
+                contentType: "application/json",
+                success: function(data){
+                    alert('성공! 데이터 값 : ' + data.result2['id']+" / " + data.result2['name']+ " / " + data.result2['birth'])
+                },
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                    alert(error);
+                }
+            })
+        })
+        
+        function fn_ajax(){
+            var postdata = {
+                'id':'아이디디', 'name':'이이이이름', 'birth':1992
+            }
+            $.ajax({
+                type: 'POST',
+                url: 'ajax',
+                data: JSON.stringify(postdata),
+                dataType : 'JSON',
+                contentType: "application/json",
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                    alert(error);
+                }
+            })
+        }
+    </script>
+    
+</body>
+</html>
