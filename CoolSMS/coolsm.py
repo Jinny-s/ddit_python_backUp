@@ -14,8 +14,8 @@ if __name__ == "__main__":
     params = dict() # 보내는 파라미터들을 dict에 담아 전송함 // python dict() 함수
     
     params['type'] = 'sms'  # 메세지 타입 (sms, lms, mms, ata )
-    params['to'] = '01093388049'  # 수신자 번호 입력, 다중으로 보내려면 '01012341234, 01043214321' 으로 입력
-    params['from'] = '01043093808'  # 발신자 번호 입력, api_key에 할당된 소유자의 번호로 입력해야 성공적으로 진행됨
+    params['to'] = '0000000000'  # 수신자 번호 입력, 다중으로 보내려면 '01012341234, 01043214321' 으로 입력
+    params['from'] = '0000000000'  # 발신자 번호 입력, api_key에 할당된 소유자의 번호로 입력해야 성공적으로 진행됨
     params['text'] = '배고파여'  # 보낼 텍스트
     
     cool = Message(api_key, api_secret)  # apikey, secret 인증을 거침
