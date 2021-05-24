@@ -2,7 +2,7 @@ import pygame
 import os, random
 import numpy as np
 
-FPS = 20
+FPS = 60
 SCREEN_SIZE = 30
 PIXEL_SIZE = 20
 LINE_WIDTH = 1

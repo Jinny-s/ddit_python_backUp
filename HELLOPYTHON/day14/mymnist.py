@@ -46,18 +46,15 @@ class MyApp(QMainWindow):
         self.setWindowTitle('MNIST Classifier')
         self.setGeometry(300, 300, 400, 400)
         self.show()
-        print('얍')
 
     def paintEvent(self, e):
         canvas = QPainter(self)
         canvas.drawImage(self.rect(), self.image, self.image.rect())
-        print('얍1')
 
     def mousePressEvent(self, e):
         if e.button() == Qt.LeftButton:
             self.drawing = True
             self.last_point = e.pos()
-            print('얍2')
 
     def mouseMoveEvent(self, e):
         if (e.buttons() & Qt.LeftButton) & self.drawing:
@@ -66,7 +63,6 @@ class MyApp(QMainWindow):
             painter.drawLine(self.last_point, e.pos())
             self.last_point = e.pos()
             self.update()
-            print('얍3')
 
     def mouseReleaseEvent(self, e):
         if e.button() == Qt.LeftButton:
@@ -77,13 +73,12 @@ class MyApp(QMainWindow):
                 for j in range(28):
                     arr[j, i] = 1 - self.image.scaled(28, 28).pixelColor(i, j).getRgb()[0] / 255.0
             arr = arr.reshape(-1, 28, 28)
-            print('얍4',arr)
 
             if self.loaded_model:
                 pred = self.loaded_model.predict(arr)[0]
                 pred_num = str(np.argmax(pred))
                 self.statusbar.showMessage('숫자 ' + pred_num + '입니다.')
-                print('얍5',pred_num)
+                print('값 : ',pred_num)
 
     def load_model(self):
         fname, _ = QFileDialog.getOpenFileName(self, 'Load Model', '')
@@ -91,14 +86,12 @@ class MyApp(QMainWindow):
         if fname:
             self.loaded_model = tf.keras.models.load_model(fname)
             self.statusbar.showMessage('Model loaded.')
-            print('얍6')
 
     def save(self):
         fpath, _ = QFileDialog.getSaveFileName(self, 'Save Image', '', "PNG(*.png);;JPEG(*.jpg *.jpeg);;All Files(*.*) ")
 
         if fpath:
             self.image.scaled(28, 28).save(fpath)
-            print('얍7')
 
     def clear(self):
         self.image.fill(Qt.white)
