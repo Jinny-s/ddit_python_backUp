@@ -1,12 +1,8 @@
-from copy import deepcopy
-
 import pygame, random
-
-# from snake import Snake, SCREEN_SIZE, PIXEL_SIZE
-# from genome import Genome
-from day18_snake.snake import Snake, SCREEN_SIZE, PIXEL_SIZE 
-from day18_snake.genome import Genome
 import numpy as np
+from copy import deepcopy
+from day18_snake.snake import SCREEN_SIZE, PIXEL_SIZE, Snake
+from day18_snake.genome import Genome
 
 N_POPULATION = 50
 N_BEST = 5
@@ -38,7 +34,7 @@ while True:
         genomes.extend(best_genomes)
     genomes.sort(key=lambda x: x.fitness, reverse=True)
     
-    print('===== Generation #%s\tBest Fitness %s =====' % (n_gen, genomes[0].fitness))
+    print('===== Generaton #%s\tBest Fitness %s =====' % (n_gen, genomes[0].fitness))
     # print(genomes[0].w1, genomes[0].w2)
     
     best_genomes = deepcopy(genomes[:N_BEST])
@@ -84,5 +80,5 @@ while True:
                 new_genome.w3 += new_genome.w3 * np.random.normal(mean, stddev, size=(20, 10)) / 100 * np.random.randint(-1, 2, (20, 10))
             if random.uniform(0, 1) < PROB_MUTATION:
                 new_genome.w4 += new_genome.w4 * np.random.normal(mean, stddev, size=(10, 3)) / 100 * np.random.randint(-1, 2, (10, 3))
-    
-        genomes.append(new_genome)
+            
+            genomes.append(new_genome)
